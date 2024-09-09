@@ -22,7 +22,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "https://myracle-case-study-pfkzkjpld-nawadkars-projects.vercel.app",
-        "https://myracle-case-study.vercel.app/",
+        "https://myracle-case-study.vercel.app",
         "http://localhost:3000"  # Allow localhost for development
     ],
     allow_credentials=True,
