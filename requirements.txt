@@ -1,0 +1,9 @@
+fastapi
+langchain
+uvicorn
+python-multipart
+pydantic
+google-generativeai
+Pillow
+pandas
+python-dotenv
