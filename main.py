@@ -10,6 +10,11 @@ import json
 import re
 import pandas as pd
 from io import BytesIO
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 app = FastAPI()
 
@@ -22,7 +27,7 @@ app.add_middleware(
 )
 
 # Configure Gemini API
-genai.configure(api_key="AIzaSyAGxQ_CiCxTBTKeilzhQicmb8Wcc_p9XK8")  # Replace with your actual API key
+genai.configure(api_key = os.getenv("GEMINI_API_KEY"))  # Replace with your actual API key
 
 class TestStep(BaseModel):
     step_count: int = Field(..., description="The step number of the test case.")
