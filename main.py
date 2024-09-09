@@ -20,7 +20,10 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Add your frontend URL
+    allow_origins=[
+        "https://myracle-case-study-pfkzkjpld-nawadkars-projects.vercel.app",
+        "http://localhost:3000"  # Allow localhost for development
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
