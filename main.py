@@ -104,7 +104,7 @@ def generate_test_instructions(images: List[bytes], context: Optional[str] = Non
 
     prompt += f"\nThe response should be in JSON format. \n {format_instructions}"
     
-    model = genai.GenerativeModel('gemini-1.5-flash-latest')
+    model = genai.GenerativeModel('gemini-1.5-flash-exp-0827')
     response = model.generate_content([prompt] + image_parts)
     results = clean_response(response.text)
     return results
@@ -114,10 +114,10 @@ async def generate_instructions(
     files: List[UploadFile] = File(...),
     context: Optional[str] = Form(None)
 ):
-    if len(files) < 5 or len(files) > 10:
+    if len(files) < 1 or len(files) > 15:
         return JSONResponse(
             status_code=400,
-            content={"error": "Please upload between 5 and 10 screenshots."}
+            content={"error": "Please upload between 1 and 15 screenshots."}
         )
     
     images = [await file.read() for file in files]
@@ -130,7 +130,7 @@ async def generate_instructions(
         return {
             # "features": feature_list.to_dict(),
             "features": feature_list.to_dict(),
-            "csv": feature_list.to_csv().to_dict(orient="records")
+            # "csv": feature_list.to_csv().to_dict(orient="records")
             # "csv": feature_list.to_csv()
         }
     except json.JSONDecodeError as e:
